@@ -1,5 +1,9 @@
 from src.berlin_rent_prediction.data import FEATURE_COLUMNS, generate_housing_data
-from src.berlin_rent_prediction.models import predict_apartment, train_classification_model, train_regression_model
+from src.berlin_rent_prediction.models import (
+    predict_apartment,
+    train_classification_model,
+    train_regression_model,
+)
 
 
 def test_generate_housing_data_contains_expected_columns():
