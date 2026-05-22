@@ -1,47 +1,123 @@
-# 🏠 Basics of Predictive Analysis
+# Berlin Rent Prediction ML
 
-<p align="center">
-  <img src="https://github.com/itkrivoshei/Basics-of-Predictive-Analysis/blob/main/Basics-of-Predictive-Analysis.gif" height="600">
-</p>
+Interactive machine-learning demo for predicting Berlin apartment rent and classifying apartments as standard or luxury using synthetic housing data.
 
-Welcome to [Basics of Predictive Analysis](https://replit.com/@itkrivoshei/Basics-of-Predictive-Analysis), an interactive project designed to predict rental prices and classify luxury apartments in Berlin using synthetic data. This project utilizes regression and classification analyses, integrated into a user-friendly GUI for easy selection and visualization of different tasks.
+The app uses a shared synthetic dataset, scikit-learn preprocessing pipelines, regression, classification, and a Streamlit interface for model interaction and visual analysis.
 
-## 📚 Project Overview
+## Features
 
-This project includes three main components:
+- Synthetic Berlin apartment dataset generation
+- Rent prediction with linear regression
+- Luxury apartment classification with logistic regression
+- Reusable scikit-learn preprocessing pipeline
+- Interactive Streamlit UI with sidebar controls
+- Regression metrics: MAE, RMSE, R²
+- Classification metrics: accuracy and confusion matrix
+- Dataset preview and CSV download
+- GitHub Actions workflow for linting, tests, and import validation
 
-| Number | Task                        | Description                                                                               | Code                                                                                          |
-| ------ | -------------------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| 1.     | 🏢 Regression Analysis      | Predict rental prices of Berlin apartments based on various features.                      | [Code](https://github.com/itkrivoshei/Basics-of-Predictive-Analysis/blob/main/regression_analysis.py)    |
-| 2.     | 🏠 Classification Analysis  | Classify apartments as luxury or non-luxury based on rental prices and other attributes.   | [Code](https://github.com/itkrivoshei/Basics-of-Predictive-Analysis/blob/main/classification_analysis.py) |
-| 3.     | 🖥️ Main GUI Script          | Launch the GUI to choose between regression and classification analyses.                  | [Code](https://github.com/itkrivoshei/Basics-of-Predictive-Analysis/blob/main/main.py)                 |
+## Tech Stack
 
-## 🚀 Quick Start
+- Python
+- Streamlit
+- pandas
+- NumPy
+- scikit-learn
+- Matplotlib
+- pytest
+- Ruff
+- GitHub Actions
 
-To try out the project, you can run it directly on Replit:
+## Project Structure
 
-1. **Run the Replit Project**:
-   [Run Project on Replit](https://replit.com/@itkrivoshei/Basics-of-Predictive-Analysis)
+```txt
+.
+├── .github/workflows/ci.yml
+├── src/
+│   └── berlin_rent_prediction/
+│       ├── __init__.py
+│       ├── data.py
+│       ├── models.py
+│       └── plots.py
+├── tests/
+│   └── test_models.py
+├── streamlit_app.py
+├── requirements.txt
+├── pyproject.toml
+├── .replit
+├── replit.nix
+└── README.md
+```
 
-2. **Choose Analysis Type**:
-   - Select "Regression" to predict rental prices.
-   - Select "Classification" to classify apartments as luxury or non-luxury.
+## Getting Started
 
-## 💻 Development Tools and Scripts
+Clone the repository:
 
-- **Python**: The primary programming language used for this project.
-- **Scikit-learn**: For machine learning models.
-- **Matplotlib**: For data visualization.
-- **Tkinter**: For the graphical user interface.
-- **Scripts**:
-  - `regression_analysis.py`: Script to run regression analysis.
-  - `classification_analysis.py`: Script to run classification analysis.
-  - `main.py`: Main script to launch the GUI and choose between regression and classification.
+```bash
+git clone https://github.com/itkrivoshei/berlin-rent-prediction-ml.git
+cd berlin-rent-prediction-ml
+```
 
-## 🤝 Contributing
+Create and activate a virtual environment:
 
-Interested in contributing? Fork the repository, create a new branch, and submit a pull request.
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
 
-## 📜 License
+Install dependencies:
 
-This project is open-source. Feel free to use and modify the code as needed.
+```bash
+pip install -r requirements.txt
+```
+
+Run the Streamlit app:
+
+```bash
+streamlit run streamlit_app.py
+```
+
+Then open:
+
+```txt
+http://localhost:8501
+```
+
+## Quality Checks
+
+Run linting:
+
+```bash
+ruff check .
+```
+
+Run tests:
+
+```bash
+pytest -q
+```
+
+Validate Python imports:
+
+```bash
+python -m py_compile streamlit_app.py src/berlin_rent_prediction/*.py
+```
+
+## Deployment
+
+This project is prepared for Streamlit Community Cloud or Replit deployment.
+
+For Streamlit Community Cloud:
+
+1. Connect the GitHub repository.
+2. Select branch: `main`.
+3. Set main file path: `streamlit_app.py`.
+4. Deploy.
+
+## Notes
+
+The dataset is synthetic and generated inside the project. It is designed for demonstrating a machine-learning workflow, not for real estate valuation or financial decision-making.
+
+## License
+
+This project is open-source. See the repository license for details.
