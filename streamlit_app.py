@@ -37,9 +37,7 @@ def load_models(n_samples: int, random_state: int):
 
 
 st.title("Berlin Rent Prediction ML")
-st.caption(
-    "Synthetic housing data · scikit-learn pipelines · regression and classification demo"
-)
+st.caption("Synthetic housing data · scikit-learn pipelines · regression and classification demo")
 
 with st.sidebar:
     st.header("Dataset")
@@ -66,9 +64,7 @@ regression_result, classification_result = load_models(n_samples, random_state)
 
 predicted_rent = predict_apartment(regression_result.model, apartment)
 predicted_class = int(classification_result.model.predict(pd.DataFrame([apartment]))[0])
-class_probability = float(
-    classification_result.model.predict_proba(pd.DataFrame([apartment]))[0][1]
-)
+class_probability = float(classification_result.model.predict_proba(pd.DataFrame([apartment]))[0][1])
 
 metric_1, metric_2, metric_3, metric_4 = st.columns(4)
 metric_1.metric("Predicted rent", f"€{predicted_rent:,.0f}")
@@ -88,7 +84,8 @@ with tab_overview:
         st.subheader("Model input")
         st.json(apartment)
         st.info(
-            "This app uses synthetic data. The numbers are useful for demonstrating the machine-learning workflow, not for real rental valuation."
+            "This app uses synthetic data. The numbers demonstrate the ML workflow, "
+            "not real rental valuation."
         )
     with right:
         st.subheader("Dataset summary")
