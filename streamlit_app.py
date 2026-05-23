@@ -4,7 +4,6 @@ from typing import Any
 
 import pandas as pd
 import streamlit as st
-
 from src.berlin_rent_prediction.data import LOCATIONS, generate_housing_data
 from src.berlin_rent_prediction.models import (
     predict_apartment,
@@ -101,7 +100,12 @@ def render_prediction_metrics(
     metric_4.metric("Regression R²", f"{regression_result.metrics['R2']:.3f}")
 
 
-def render_tabs(df: pd.DataFrame, apartment: dict[str, Any], regression_result, classification_result) -> None:
+def render_tabs(
+    df: pd.DataFrame,
+    apartment: dict[str, Any],
+    regression_result,
+    classification_result,
+) -> None:
     tab_overview, tab_regression, tab_classification, tab_data = st.tabs(
         ["Overview", "Regression", "Classification", "Data"]
     )
