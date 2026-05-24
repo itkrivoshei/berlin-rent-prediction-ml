@@ -22,5 +22,12 @@ htmlcov/
 
 # Local files
 .env
+.env.*
+!.env.example
 .DS_Store
 .streamlit/secrets.toml
+
+# Generated data and models
+*.csv
+*.pkl
+*.joblib
