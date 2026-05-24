@@ -34,13 +34,21 @@ jobs:
           python -m pip install -r requirements.txt
 
       - name: Lint
-        run: ruff check .
+        run: python -m ruff check .
 
       - name: Format check
-        run: ruff format --check .
+        run: python -m ruff format --check .
 
       - name: Run tests
-        run: pytest -q
+        run: python -m pytest -q
 
       - name: Validate Python modules
         run: python -m compileall -q streamlit_app.py src tests
+
+      - name: Validate application imports
+        run: python -c "import streamlit_app"
+
+      - name: Validate analysis scripts
+        run: |
+          python regression_analysis.py
+          python classification_analysis.py
