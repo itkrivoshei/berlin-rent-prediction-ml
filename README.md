@@ -1,157 +1,122 @@
 # Berlin Rent Prediction ML
 
-Interactive machine-learning app for predicting Berlin apartment rent and classifying apartments as standard or luxury with synthetic housing data.
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-app-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://berlin-rent-prediction-ml.streamlit.app/)
+[![CI](https://img.shields.io/github/actions/workflow/status/itkrivoshei/berlin-rent-prediction-ml/ci.yml?branch=main&style=flat-square&label=CI)](https://github.com/itkrivoshei/berlin-rent-prediction-ml/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 
-The project is structured as a small Python ML application: reusable data generation, reusable model training functions, automated tests, linting, and a Streamlit dashboard.
+Streamlit app for predicting synthetic Berlin apartment rent and classifying apartments as standard or luxury.
 
-## Features
-
-- Synthetic Berlin apartment dataset generation
-- Rent prediction with a scikit-learn regression pipeline
-- Luxury apartment classification with a scikit-learn classification pipeline
-- Shared preprocessing for categorical and numerical features
-- Streamlit dashboard with sidebar inputs, metrics, plots, and CSV export
-- Regression metrics: MAE, RMSE, and R²
-- Classification metrics: accuracy and confusion matrix
-- GitHub Actions workflow for linting, formatting checks, tests, and module validation
-- Streamlit Community Cloud and Replit deployment configuration
-
-## Tech Stack
+## Tech stack
 
 - Python 3.12
 - Streamlit
-- pandas
-- NumPy
+- pandas / NumPy
 - scikit-learn
 - Matplotlib
 - pytest
 - Ruff
 - GitHub Actions
 
-## Project Structure
+## Scope
+
+- Generates a reproducible synthetic Berlin housing dataset
+- Trains a linear regression model for rent prediction
+- Trains a logistic regression model for luxury apartment classification
+- Displays metrics, plots, sample data, and CSV export in Streamlit
+- Includes CLI scripts for separate regression and classification checks
+
+The dataset is synthetic and generated inside the project. It is not suitable for real rental valuation, financial decisions, legal advice, or market analysis.
+
+## Live demo
+
+```txt
+https://berlin-rent-prediction-ml.streamlit.app/
+```
+
+## Install
+
+```bash
+git clone https://github.com/itkrivoshei/berlin-rent-prediction-ml.git
+cd berlin-rent-prediction-ml
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+Windows PowerShell activation:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+## Run
+
+```bash
+streamlit run streamlit_app.py
+```
+
+The app runs locally at:
+
+```txt
+http://localhost:8501
+```
+
+## CLI checks
+
+```bash
+python regression_analysis.py
+python classification_analysis.py
+```
+
+## Quality checks
+
+```bash
+python -m ruff check .
+python -m ruff format --check .
+python -m pytest -q
+python -m compileall -q streamlit_app.py src tests
+python -c "import streamlit_app"
+```
+
+## Project structure
 
 ```txt
 .
+├── .devcontainer/devcontainer.json
 ├── .github/workflows/ci.yml
-├── src/
-│   └── berlin_rent_prediction/
-│       ├── __init__.py
-│       ├── data.py
-│       ├── models.py
-│       └── plots.py
-├── tests/
-│   └── test_models.py
+├── .streamlit/config.toml
+├── src/berlin_rent_prediction/
+│   ├── __init__.py
+│   ├── data.py
+│   ├── models.py
+│   └── plots.py
+├── tests/test_models.py
 ├── classification_analysis.py
 ├── regression_analysis.py
 ├── streamlit_app.py
 ├── requirements.txt
 ├── runtime.txt
 ├── pyproject.toml
-├── .replit
-├── replit.nix
+├── LICENSE
 └── README.md
-```
-
-## Getting Started
-
-Clone the repository:
-
-```bash
-git clone https://github.com/itkrivoshei/berlin-rent-prediction-ml.git
-cd berlin-rent-prediction-ml
-```
-
-Create and activate a virtual environment:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-```
-
-On Windows PowerShell:
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-Install dependencies:
-
-```bash
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-```
-
-Run the Streamlit app:
-
-```bash
-streamlit run streamlit_app.py
-```
-
-Then open:
-
-```txt
-http://localhost:8501
-```
-
-## Command-Line Analysis
-
-Run the regression workflow:
-
-```bash
-python regression_analysis.py
-```
-
-Run the classification workflow:
-
-```bash
-python classification_analysis.py
-```
-
-## Quality Checks
-
-Run linting:
-
-```bash
-ruff check .
-```
-
-Run formatting validation:
-
-```bash
-ruff format --check .
-```
-
-Run tests:
-
-```bash
-pytest -q
-```
-
-Validate Python modules:
-
-```bash
-python -m compileall -q streamlit_app.py src tests
 ```
 
 ## Deployment
 
-### Streamlit Community Cloud
+The live app is deployed on Streamlit Community Cloud.
 
-1. Connect this GitHub repository.
-2. Select branch: `main`.
-3. Set the main file path to `streamlit_app.py`.
-4. Use Python 3.12. The repository includes `runtime.txt` for this.
-5. Deploy or reboot the app after dependency changes.
+Repository deployment settings:
 
-### Replit
+```txt
+Branch: main
+Main file: streamlit_app.py
+Python runtime: runtime.txt
+```
 
-The repository also includes `.replit` and `replit.nix` for running the same Streamlit app on Replit.
-
-## Data Note
-
-The dataset is synthetic and generated inside the project. It is useful for demonstrating a machine-learning workflow, but it should not be used for real estate valuation, legal advice, financial decisions, or rental market analysis.
+The repository also contains Replit configuration files for running the same Streamlit app in Replit.
 
 ## License
 
-This project is open-source. See the repository license for details.
+MIT License. See [LICENSE](LICENSE).
