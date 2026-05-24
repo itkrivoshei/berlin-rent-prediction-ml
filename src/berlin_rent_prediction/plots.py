@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
+from matplotlib import pyplot as plt
+from matplotlib.figure import Figure
 
 
-def plot_rent_distribution(df: pd.DataFrame):
+def plot_rent_distribution(df: pd.DataFrame) -> Figure:
     fig, ax = plt.subplots(figsize=(8, 4.5))
     ax.hist(df["rental_price"], bins=30, edgecolor="black", alpha=0.75)
     ax.set_title("Synthetic Berlin Rent Distribution")
@@ -15,7 +17,7 @@ def plot_rent_distribution(df: pd.DataFrame):
     return fig
 
 
-def plot_actual_vs_predicted(y_test: pd.Series, y_pred):
+def plot_actual_vs_predicted(y_test: pd.Series, y_pred: np.ndarray) -> Figure:
     fig, ax = plt.subplots(figsize=(8, 4.5))
     ax.scatter(y_test, y_pred, alpha=0.7)
     min_value = min(float(y_test.min()), float(y_pred.min()))
@@ -29,7 +31,7 @@ def plot_actual_vs_predicted(y_test: pd.Series, y_pred):
     return fig
 
 
-def plot_residuals(y_test: pd.Series, y_pred):
+def plot_residuals(y_test: pd.Series, y_pred: np.ndarray) -> Figure:
     residuals = y_test - y_pred
     fig, ax = plt.subplots(figsize=(8, 4.5))
     ax.scatter(y_pred, residuals, alpha=0.7)
@@ -42,7 +44,7 @@ def plot_residuals(y_test: pd.Series, y_pred):
     return fig
 
 
-def plot_class_distribution(df: pd.DataFrame):
+def plot_class_distribution(df: pd.DataFrame) -> Figure:
     counts = df["luxury"].value_counts().sort_index()
     labels = ["Standard", "Luxury"]
 
