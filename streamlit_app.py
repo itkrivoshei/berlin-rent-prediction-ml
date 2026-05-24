@@ -117,7 +117,8 @@ def render_tabs(
             st.json(apartment)
         with right:
             st.subheader("Dataset summary")
-            st.dataframe(df.describe(include="all"), use_container_width=True)
+            summary_df = df.describe(include="all").fillna("").astype(str)
+            st.dataframe(summary_df, width="stretch")
 
     with tab_regression:
         st.subheader("Rent prediction model")
@@ -142,12 +143,12 @@ def render_tabs(
             columns=["Predicted standard", "Predicted luxury"],
         )
         col_a, col_b = st.columns(2)
-        col_a.dataframe(cm_df, use_container_width=True)
+        col_a.dataframe(cm_df, width="stretch")
         col_b.pyplot(plot_class_distribution(df))
 
     with tab_data:
         st.subheader("Synthetic dataset")
-        st.dataframe(df.head(100), use_container_width=True)
+        st.dataframe(df.head(100), width="stretch")
         st.download_button(
             "Download dataset as CSV",
             data=df.to_csv(index=False).encode("utf-8"),
