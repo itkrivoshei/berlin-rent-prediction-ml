@@ -6,6 +6,8 @@ import pandas as pd
 import streamlit as st
 from src.berlin_rent_prediction.data import LOCATIONS, generate_housing_data
 from src.berlin_rent_prediction.models import (
+    ClassificationResult,
+    RegressionResult,
     predict_apartment,
     train_classification_model,
     train_regression_model,
@@ -19,6 +21,8 @@ from src.berlin_rent_prediction.plots import (
 
 APP_TITLE = "Berlin Rent Prediction ML"
 APP_SUBTITLE = "Synthetic housing data · scikit-learn pipelines · Streamlit dashboard"
+
+ApartmentInput = dict[str, Any]
 
 st.set_page_config(
     page_title=APP_TITLE,
@@ -34,7 +38,7 @@ def load_data(n_samples: int, random_state: int) -> pd.DataFrame:
 
 
 @st.cache_resource(show_spinner="Training models...")
-def load_models(n_samples: int, random_state: int):
+def load_models(n_samples: int, random_state: int) -> tuple[RegressionResult, ClassificationResult]:
     """Train and cache both models for the selected dataset settings."""
     df = generate_housing_data(n_samples=n_samples, random_state=random_state)
     regression = train_regression_model(df, random_state=random_state)
@@ -42,7 +46,7 @@ def load_models(n_samples: int, random_state: int):
     return regression, classification
 
 
-def build_apartment_input() -> dict[str, Any]:
+def build_apartment_input() -> ApartmentInput:
     """Render sidebar controls and return one apartment payload."""
     with st.sidebar:
         st.header("Dataset")
@@ -83,10 +87,20 @@ def render_header() -> None:
     )
 
 
+def render_scope_summary(df: pd.DataFrame) -> None:
+    """Render a compact project-specific summary above the model tabs."""
+    with st.container(border=True):
+        st.caption("Model scope")
+        col_a, col_b, col_c = st.columns(3)
+        col_a.metric("Synthetic records", f"{len(df):,}")
+        col_b.metric("Berlin areas", df["location"].nunique())
+        col_c.metric("Data source", "Generated")
+
+
 def render_prediction_metrics(
-    apartment: dict[str, Any],
-    regression_result,
-    classification_result,
+    apartment: ApartmentInput,
+    regression_result: RegressionResult,
+    classification_result: ClassificationResult,
 ) -> None:
     predicted_rent = predict_apartment(regression_result.model, apartment)
     input_df = pd.DataFrame([apartment])
@@ -102,9 +116,9 @@ def render_prediction_metrics(
 
 def render_tabs(
     df: pd.DataFrame,
-    apartment: dict[str, Any],
-    regression_result,
-    classification_result,
+    apartment: ApartmentInput,
+    regression_result: RegressionResult,
+    classification_result: ClassificationResult,
 ) -> None:
     tab_overview, tab_regression, tab_classification, tab_data = st.tabs(
         ["Overview", "Regression", "Classification", "Data"]
@@ -167,6 +181,7 @@ def main() -> None:
     regression_result, classification_result = load_models(n_samples, random_state)
 
     render_prediction_metrics(apartment, regression_result, classification_result)
+    render_scope_summary(df)
     st.divider()
     render_tabs(df, apartment, regression_result, classification_result)
 
