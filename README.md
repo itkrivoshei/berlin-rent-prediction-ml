@@ -8,13 +8,11 @@ Streamlit app for synthetic Berlin rent prediction with scikit-learn.
 
 Live demo: [berlin-rent-prediction-ml.streamlit.app](https://berlin-rent-prediction-ml.streamlit.app/)
 
-The project demonstrates a compact machine-learning workflow: synthetic data generation, regression and classification pipelines, model evaluation, Streamlit UI, automated tests, linting, formatting checks, Dependabot updates, and GitHub Actions CI.
+## Project Scope
 
-## Project Status
+This is a small educational ML project. It demonstrates synthetic data generation, regression and classification pipelines, Streamlit UI, automated tests, linting, Dependabot updates, and GitHub Actions CI.
 
-This is a small educational ML project. The dataset is generated inside the repository and does not use external APIs, scraped listings, or real rental-market data.
-
-It is suitable for demonstrating a Python ML workflow, but not for real rental valuation, financial decisions, legal advice, or Berlin housing-market analysis.
+The dataset is generated inside the repository and does not use external APIs, scraped listings, or real rental-market data. The app should not be used for real rental valuation, financial decisions, legal advice, or Berlin housing-market analysis.
 
 ## Features
 
@@ -24,7 +22,6 @@ It is suitable for demonstrating a Python ML workflow, but not for real rental v
 - Display metrics, charts, sample data, and CSV export in Streamlit
 - Run separate CLI checks for regression and classification
 - Validate code quality with Ruff, Pytest, and GitHub Actions
-- Auto-merge Dependabot pull requests after successful CI
 
 ## Tech Stack
 
@@ -37,7 +34,7 @@ It is suitable for demonstrating a Python ML workflow, but not for real rental v
 | Visualization | Matplotlib |
 | Testing | Pytest |
 | Linting / formatting | Ruff |
-| CI | GitHub Actions |
+| CI/CD | GitHub Actions |
 | Dependency updates | Dependabot |
 | Deployment | Streamlit Community Cloud |
 | Dev environment | Dev Container / Codespaces |
@@ -73,12 +70,6 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-On Windows PowerShell:
-
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
 Install dependencies:
 
 ```bash
@@ -94,7 +85,7 @@ Run the Streamlit app:
 streamlit run streamlit_app.py
 ```
 
-The app runs locally at:
+Open:
 
 ```text
 http://localhost:8501
@@ -123,19 +114,9 @@ python classification_analysis.py
 
 ## CI/CD
 
-The GitHub Actions workflow runs on pushes and pull requests to `main`.
+The GitHub Actions workflow validates dependency installation, Ruff, Pytest, Python compilation, Streamlit import, and regression/classification scripts on pushes and pull requests to `main`.
 
-It checks:
-
-- dependency installation
-- Ruff linting
-- Ruff formatting
-- Pytest tests
-- Python module compilation
-- Streamlit app import
-- regression and classification scripts
-
-Dependabot checks Python and GitHub Actions dependencies weekly. Dependabot pull requests are automatically squash-merged only after the CI workflow finishes successfully.
+Dependabot checks Python and GitHub Actions dependencies weekly. Dependabot pull requests are automatically squash-merged after successful CI.
 
 ## Project Structure
 
@@ -182,7 +163,7 @@ Dependabot checks Python and GitHub Actions dependencies weekly. Dependabot pull
 | [`runtime.txt`](runtime.txt) | Python runtime version for Streamlit Cloud |
 | [`pyproject.toml`](pyproject.toml) | Project metadata, dependency ranges, Ruff, and Pytest config |
 | [`.streamlit/config.toml`](.streamlit/config.toml) | Streamlit app configuration |
-| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | CI validation workflow |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | CI workflow |
 | [`.github/workflows/dependabot-auto-merge.yml`](.github/workflows/dependabot-auto-merge.yml) | Dependabot auto-merge after green CI |
 | [`.github/dependabot.yml`](.github/dependabot.yml) | Weekly dependency update checks |
 | [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json) | Codespaces / Dev Container setup |
@@ -190,24 +171,12 @@ Dependabot checks Python and GitHub Actions dependencies weekly. Dependabot pull
 
 ## Deployment
 
-The app is deployed on Streamlit Community Cloud:
-
-```text
-https://berlin-rent-prediction-ml.streamlit.app/
-```
-
 Streamlit Cloud uses:
 
 ```text
 Main file path: streamlit_app.py
 Python version: runtime.txt
 Dependencies: requirements.txt
-```
-
-`requirements.txt` installs the package with app dependencies:
-
-```text
--e .[app]
 ```
 
 ## License
