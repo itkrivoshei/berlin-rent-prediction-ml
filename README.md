@@ -6,25 +6,9 @@
 
 Streamlit app for synthetic Berlin rent prediction with scikit-learn.
 
+Live demo: [berlin-rent-prediction-ml.streamlit.app](https://berlin-rent-prediction-ml.streamlit.app/)
+
 The project demonstrates a compact machine-learning workflow: synthetic data generation, regression and classification pipelines, model evaluation, Streamlit UI, automated tests, linting, formatting checks, Dependabot updates, and GitHub Actions CI.
-
-## Quick Links
-
-| Resource | Link |
-|---|---|
-| Streamlit app entry point | [`streamlit_app.py`](streamlit_app.py) |
-| Data generation | [`src/berlin_rent_prediction/data.py`](src/berlin_rent_prediction/data.py) |
-| ML pipelines | [`src/berlin_rent_prediction/models.py`](src/berlin_rent_prediction/models.py) |
-| Plot helpers | [`src/berlin_rent_prediction/plots.py`](src/berlin_rent_prediction/plots.py) |
-| Regression CLI check | [`regression_analysis.py`](regression_analysis.py) |
-| Classification CLI check | [`classification_analysis.py`](classification_analysis.py) |
-| Tests | [`tests/test_models.py`](tests/test_models.py) |
-| CI workflow | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) |
-| Dependabot config | [`.github/dependabot.yml`](.github/dependabot.yml) |
-| Dev Container | [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json) |
-| License | [`LICENSE`](LICENSE) |
-
-No public live demo is linked for this repository. Run the app locally or deploy it with the Streamlit Cloud settings below.
 
 ## Project Status
 
@@ -55,6 +39,7 @@ It is suitable for demonstrating a Python ML workflow, but not for real rental v
 | Linting / formatting | Ruff |
 | CI | GitHub Actions |
 | Dependency updates | Dependabot |
+| Deployment | Streamlit Community Cloud |
 | Dev environment | Dev Container / Codespaces |
 
 ## Models
@@ -193,14 +178,25 @@ Dependabot checks Python and GitHub Actions dependencies weekly. Dependabot pull
 | [`regression_analysis.py`](regression_analysis.py) | CLI regression check |
 | [`classification_analysis.py`](classification_analysis.py) | CLI classification check |
 | [`tests/test_models.py`](tests/test_models.py) | Unit tests |
-| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | CI validation |
+| [`requirements.txt`](requirements.txt) | Streamlit Cloud dependency entry point |
+| [`runtime.txt`](runtime.txt) | Python runtime version for Streamlit Cloud |
+| [`pyproject.toml`](pyproject.toml) | Project metadata, dependency ranges, Ruff, and Pytest config |
+| [`.streamlit/config.toml`](.streamlit/config.toml) | Streamlit app configuration |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | CI validation workflow |
 | [`.github/workflows/dependabot-auto-merge.yml`](.github/workflows/dependabot-auto-merge.yml) | Dependabot auto-merge after green CI |
 | [`.github/dependabot.yml`](.github/dependabot.yml) | Weekly dependency update checks |
 | [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json) | Codespaces / Dev Container setup |
+| [`LICENSE`](LICENSE) | MIT license |
 
-## Streamlit Cloud Setup
+## Deployment
 
-Use these settings if deploying the app to Streamlit Community Cloud:
+The app is deployed on Streamlit Community Cloud:
+
+```text
+https://berlin-rent-prediction-ml.streamlit.app/
+```
+
+Streamlit Cloud uses:
 
 ```text
 Main file path: streamlit_app.py
