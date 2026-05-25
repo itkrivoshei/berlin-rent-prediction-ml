@@ -1,5 +1,5 @@
-from src.berlin_rent_prediction.data import FEATURE_COLUMNS, generate_housing_data
-from src.berlin_rent_prediction.models import (
+from berlin_rent_prediction.data import FEATURE_COLUMNS, generate_housing_data
+from berlin_rent_prediction.models import (
     predict_apartment,
     train_classification_model,
     train_regression_model,

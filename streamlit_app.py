@@ -4,15 +4,16 @@ from typing import Any
 
 import pandas as pd
 import streamlit as st
-from src.berlin_rent_prediction.data import LOCATIONS, generate_housing_data
-from src.berlin_rent_prediction.models import (
+
+from berlin_rent_prediction.data import LOCATIONS, generate_housing_data
+from berlin_rent_prediction.models import (
     ClassificationResult,
     RegressionResult,
     predict_apartment,
     train_classification_model,
     train_regression_model,
 )
-from src.berlin_rent_prediction.plots import (
+from berlin_rent_prediction.plots import (
     plot_actual_vs_predicted,
     plot_class_distribution,
     plot_rent_distribution,

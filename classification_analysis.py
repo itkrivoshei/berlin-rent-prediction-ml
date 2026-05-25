@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from src.berlin_rent_prediction.data import generate_housing_data
-from src.berlin_rent_prediction.models import train_classification_model
+from berlin_rent_prediction.data import generate_housing_data
+from berlin_rent_prediction.models import train_classification_model
 
 
 def run_classification_analysis() -> None:

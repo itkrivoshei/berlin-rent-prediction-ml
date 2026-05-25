@@ -1,7 +1,1 @@
-matplotlib>=3.10,<4
-numpy>=2.2,<3
-pandas>=2.3,<3
-pytest>=8.4,<9
-ruff>=0.13,<1
-scikit-learn>=1.7,<2
-streamlit>=1.50,<2
+-e .[app]

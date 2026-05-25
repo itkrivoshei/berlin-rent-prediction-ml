@@ -1,33 +1,42 @@
-# Python
+# Python caches
 __pycache__/
 *.py[cod]
+
+# Test, lint, type-check, and coverage caches
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
 
-# Virtual environments
+# Virtual environments and local Python environments
 .venv/
 venv/
 env/
 ENV/
+.pythonlibs/
 
 # Build artifacts
 build/
 dist/
 *.egg-info/
 
-# Coverage
-.coverage
-htmlcov/
-
-# Local files
+# Local configuration and secrets
 .env
 .env.*
 !.env.example
-.DS_Store
 .streamlit/secrets.toml
 
-# Generated data and models
-*.csv
+# Generated model artifacts
 *.pkl
 *.joblib
+
+# Notebook and editor metadata
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# OS files and logs
+.DS_Store
+*.log
