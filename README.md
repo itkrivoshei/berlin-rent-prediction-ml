@@ -6,7 +6,25 @@
 
 Streamlit app for synthetic Berlin rent prediction with scikit-learn.
 
-The project demonstrates a compact machine-learning workflow: synthetic data generation, regression and classification pipelines, model evaluation, Streamlit UI, automated tests, linting, formatting checks, and GitHub Actions CI.
+The project demonstrates a compact machine-learning workflow: synthetic data generation, regression and classification pipelines, model evaluation, Streamlit UI, automated tests, linting, formatting checks, Dependabot updates, and GitHub Actions CI.
+
+## Quick Links
+
+| Resource | Link |
+|---|---|
+| Streamlit app entry point | [`streamlit_app.py`](streamlit_app.py) |
+| Data generation | [`src/berlin_rent_prediction/data.py`](src/berlin_rent_prediction/data.py) |
+| ML pipelines | [`src/berlin_rent_prediction/models.py`](src/berlin_rent_prediction/models.py) |
+| Plot helpers | [`src/berlin_rent_prediction/plots.py`](src/berlin_rent_prediction/plots.py) |
+| Regression CLI check | [`regression_analysis.py`](regression_analysis.py) |
+| Classification CLI check | [`classification_analysis.py`](classification_analysis.py) |
+| Tests | [`tests/test_models.py`](tests/test_models.py) |
+| CI workflow | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) |
+| Dependabot config | [`.github/dependabot.yml`](.github/dependabot.yml) |
+| Dev Container | [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json) |
+| License | [`LICENSE`](LICENSE) |
+
+No public live demo is linked for this repository. Run the app locally or deploy it with the Streamlit Cloud settings below.
 
 ## Project Status
 
@@ -22,6 +40,7 @@ It is suitable for demonstrating a Python ML workflow, but not for real rental v
 - Display metrics, charts, sample data, and CSV export in Streamlit
 - Run separate CLI checks for regression and classification
 - Validate code quality with Ruff, Pytest, and GitHub Actions
+- Auto-merge Dependabot pull requests after successful CI
 
 ## Tech Stack
 
@@ -35,7 +54,7 @@ It is suitable for demonstrating a Python ML workflow, but not for real rental v
 | Testing | Pytest |
 | Linting / formatting | Ruff |
 | CI | GitHub Actions |
-| Dependency checks | Dependabot |
+| Dependency updates | Dependabot |
 | Dev environment | Dev Container / Codespaces |
 
 ## Models
@@ -131,7 +150,7 @@ It checks:
 - Streamlit app import
 - regression and classification scripts
 
-Dependabot checks Python and GitHub Actions dependencies weekly. Major version updates are ignored by default and should be reviewed manually.
+Dependabot checks Python and GitHub Actions dependencies weekly. Dependabot pull requests are automatically squash-merged only after the CI workflow finishes successfully.
 
 ## Project Structure
 
@@ -142,7 +161,8 @@ Dependabot checks Python and GitHub Actions dependencies weekly. Major version u
 ├── .github/
 │   ├── dependabot.yml
 │   └── workflows/
-│       └── ci.yml
+│       ├── ci.yml
+│       └── dependabot-auto-merge.yml
 ├── .streamlit/
 │   └── config.toml
 ├── src/
@@ -166,16 +186,17 @@ Dependabot checks Python and GitHub Actions dependencies weekly. Major version u
 
 | File | Purpose |
 |---|---|
-| `streamlit_app.py` | Streamlit dashboard |
-| `src/berlin_rent_prediction/data.py` | Synthetic dataset generation |
-| `src/berlin_rent_prediction/models.py` | Regression and classification pipelines |
-| `src/berlin_rent_prediction/plots.py` | Matplotlib chart helpers |
-| `regression_analysis.py` | CLI regression check |
-| `classification_analysis.py` | CLI classification check |
-| `tests/` | Unit tests |
-| `.github/workflows/ci.yml` | CI validation |
-| `.github/dependabot.yml` | Weekly dependency update checks |
-| `.devcontainer/devcontainer.json` | Codespaces / Dev Container setup |
+| [`streamlit_app.py`](streamlit_app.py) | Streamlit dashboard |
+| [`src/berlin_rent_prediction/data.py`](src/berlin_rent_prediction/data.py) | Synthetic dataset generation |
+| [`src/berlin_rent_prediction/models.py`](src/berlin_rent_prediction/models.py) | Regression and classification pipelines |
+| [`src/berlin_rent_prediction/plots.py`](src/berlin_rent_prediction/plots.py) | Matplotlib chart helpers |
+| [`regression_analysis.py`](regression_analysis.py) | CLI regression check |
+| [`classification_analysis.py`](classification_analysis.py) | CLI classification check |
+| [`tests/test_models.py`](tests/test_models.py) | Unit tests |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | CI validation |
+| [`.github/workflows/dependabot-auto-merge.yml`](.github/workflows/dependabot-auto-merge.yml) | Dependabot auto-merge after green CI |
+| [`.github/dependabot.yml`](.github/dependabot.yml) | Weekly dependency update checks |
+| [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json) | Codespaces / Dev Container setup |
 
 ## Streamlit Cloud Setup
 
