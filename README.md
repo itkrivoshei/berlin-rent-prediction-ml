@@ -3,17 +3,16 @@
 [![Python CI](https://img.shields.io/github/actions/workflow/status/itkrivoshei/berlin-rent-prediction-ml/ci.yml?branch=main&style=flat-square)](https://github.com/itkrivoshei/berlin-rent-prediction-ml/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/github/license/itkrivoshei/berlin-rent-prediction-ml?style=flat-square)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.12-blue?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
-[![Streamlit demo](https://img.shields.io/badge/demo-Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://berlin-rent-prediction-ml.streamlit.app/)
 
 Streamlit app for synthetic Berlin rent prediction with scikit-learn.
 
-The project demonstrates a compact machine-learning workflow: synthetic data generation, regression, classification, model evaluation, Streamlit UI, automated tests, linting, formatting checks, and GitHub Actions CI.
+The project demonstrates a compact machine-learning workflow: synthetic data generation, regression and classification pipelines, model evaluation, Streamlit UI, automated tests, linting, formatting checks, and GitHub Actions CI.
 
-## Live Demo
+## Project Status
 
-Streamlit app:
+This is a small educational ML project. The dataset is generated inside the repository and does not use external APIs, scraped listings, or real rental-market data.
 
-https://berlin-rent-prediction-ml.streamlit.app/
+It is suitable for demonstrating a Python ML workflow, but not for real rental valuation, financial decisions, legal advice, or Berlin housing-market analysis.
 
 ## Features
 
@@ -36,13 +35,8 @@ https://berlin-rent-prediction-ml.streamlit.app/
 | Testing | Pytest |
 | Linting / formatting | Ruff |
 | CI | GitHub Actions |
-| Deployment | Streamlit Community Cloud |
-
-## Dataset Scope
-
-The dataset is synthetic and generated inside the project.
-
-It is useful for demonstrating a machine-learning workflow, but it is not suitable for real rental valuation, financial decisions, legal advice, or Berlin housing market analysis.
+| Dependency checks | Dependabot |
+| Dev environment | Dev Container / Codespaces |
 
 ## Models
 
@@ -63,67 +57,85 @@ Input features:
 
 Clone the repository:
 
-~~~bash
+```bash
 git clone git@github.com:itkrivoshei/berlin-rent-prediction-ml.git
 cd berlin-rent-prediction-ml
-~~~
+```
 
 Create and activate a virtual environment:
 
-~~~bash
+```bash
 python -m venv .venv
 source .venv/bin/activate
-~~~
+```
 
 On Windows PowerShell:
 
-~~~powershell
+```powershell
 .venv\Scripts\Activate.ps1
-~~~
+```
 
 Install dependencies:
 
-~~~bash
+```bash
 python -m pip install --upgrade pip
 python -m pip install -e ".[app,dev]"
-~~~
+```
 
 ## Run
 
 Run the Streamlit app:
 
-~~~bash
+```bash
 streamlit run streamlit_app.py
-~~~
+```
 
 The app runs locally at:
 
-~~~text
+```text
 http://localhost:8501
-~~~
+```
 
 Run the CLI checks:
 
-~~~bash
+```bash
 python regression_analysis.py
 python classification_analysis.py
-~~~
+```
 
 ## Verify
 
 Run the same checks used by CI:
 
-~~~bash
+```bash
 python -m ruff check .
 python -m ruff format --check .
 python -m pytest -q
 python -m compileall -q streamlit_app.py src tests
 python -c "import streamlit_app"
-~~~
+python regression_analysis.py
+python classification_analysis.py
+```
+
+## CI/CD
+
+The GitHub Actions workflow runs on pushes and pull requests to `main`.
+
+It checks:
+
+- dependency installation
+- Ruff linting
+- Ruff formatting
+- Pytest tests
+- Python module compilation
+- Streamlit app import
+- regression and classification scripts
+
+Dependabot checks Python and GitHub Actions dependencies weekly. Major version updates are ignored by default and should be reviewed manually.
 
 ## Project Structure
 
-~~~text
+```text
 .
 ├── .devcontainer/
 │   └── devcontainer.json
@@ -148,7 +160,7 @@ python -c "import streamlit_app"
 ├── runtime.txt
 ├── pyproject.toml
 └── README.md
-~~~
+```
 
 ## Key Files
 
@@ -163,22 +175,23 @@ python -c "import streamlit_app"
 | `tests/` | Unit tests |
 | `.github/workflows/ci.yml` | CI validation |
 | `.github/dependabot.yml` | Weekly dependency update checks |
+| `.devcontainer/devcontainer.json` | Codespaces / Dev Container setup |
 
-## Deployment
+## Streamlit Cloud Setup
 
-Streamlit Community Cloud uses:
+Use these settings if deploying the app to Streamlit Community Cloud:
 
-~~~text
+```text
 Main file path: streamlit_app.py
 Python version: runtime.txt
 Dependencies: requirements.txt
-~~~
+```
 
 `requirements.txt` installs the package with app dependencies:
 
-~~~text
+```text
 -e .[app]
-~~~
+```
 
 ## License
 
