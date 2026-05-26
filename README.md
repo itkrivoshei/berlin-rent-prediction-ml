@@ -6,8 +6,6 @@
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-1.7-f7931e?style=flat-square&logo=scikitlearn&logoColor=white)](pyproject.toml)
 [![License: MIT](https://img.shields.io/github/license/itkrivoshei/berlin-rent-prediction-ml?style=flat-square)](LICENSE)
 
-## [Open Streamlit App ->](https://berlin-rent-prediction-ml.streamlit.app/)
-
 Streamlit app for synthetic Berlin rent prediction using scikit-learn regression and classification pipelines.
 
 ## Model Boundary
@@ -72,8 +70,6 @@ python classification_analysis.py
 ## Deployment
 
 Streamlit Community Cloud runs `streamlit_app.py` with dependencies from `requirements.txt` and Python from `runtime.txt`.
-
-Live app: https://berlin-rent-prediction-ml.streamlit.app/
 
 ## License
 
