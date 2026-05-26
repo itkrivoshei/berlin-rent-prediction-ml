@@ -1,76 +1,50 @@
 # Berlin Rent Prediction ML
 
-[![Python CI](https://img.shields.io/github/actions/workflow/status/itkrivoshei/berlin-rent-prediction-ml/ci.yml?branch=main&style=flat-square)](https://github.com/itkrivoshei/berlin-rent-prediction-ml/actions/workflows/ci.yml)
+[![Live app](https://img.shields.io/badge/live-Streamlit-ff4b4b?style=flat-square&logo=streamlit&logoColor=white)](https://berlin-rent-prediction-ml.streamlit.app/)
+[![Python CI](https://img.shields.io/github/actions/workflow/status/itkrivoshei/berlin-rent-prediction-ml/ci.yml?branch=main&style=flat-square&label=python%20ci&logo=githubactions&logoColor=white)](https://github.com/itkrivoshei/berlin-rent-prediction-ml/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/Python-3.12-3776ab?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.7-f7931e?style=flat-square&logo=scikitlearn&logoColor=white)](pyproject.toml)
 [![License: MIT](https://img.shields.io/github/license/itkrivoshei/berlin-rent-prediction-ml?style=flat-square)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.12-blue?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
 
-Streamlit app for synthetic Berlin rent prediction with scikit-learn.
+## [Open Streamlit App ->](https://berlin-rent-prediction-ml.streamlit.app/)
 
-Live demo: [berlin-rent-prediction-ml.streamlit.app](https://berlin-rent-prediction-ml.streamlit.app/)
+Streamlit app for synthetic Berlin rent prediction using scikit-learn regression and classification pipelines.
 
-## Project Scope
+## Model Boundary
 
-Small educational ML project for synthetic rent prediction. It demonstrates generated data, regression and classification pipelines, Streamlit UI, tests, Ruff, Dependabot, and GitHub Actions CI.
+This repository generates its own synthetic housing dataset. It does not scrape listings, query external real-estate APIs, or represent the live Berlin rental market.
 
-The dataset is generated inside the repository and does not use external APIs, scraped listings, or real rental-market data. The app should not be used for real rental valuation, financial decisions, legal advice, or Berlin housing-market analysis.
+| Task | Model | Output |
+| --- | --- | --- |
+| Rent estimate | Linear regression pipeline | Predicted monthly rent |
+| Segment label | Logistic regression pipeline | Standard or luxury apartment |
 
-## Tech Stack
+The app is useful for inspecting a full ML workflow: data generation, preprocessing, model training, metrics, prediction controls, charts, tests, and CI.
 
-| Area | Tools |
-|---|---|
-| Language | Python 3.12 |
-| UI | Streamlit |
-| Data | pandas, NumPy |
-| Machine learning | scikit-learn |
-| Visualization | Matplotlib |
-| Testing / quality | Pytest, Ruff |
-| CI/CD | GitHub Actions |
-| Dependency updates | Dependabot |
-| Deployment | Streamlit Community Cloud |
-| Dev environment | Dev Container / Codespaces |
+## Input Signals
 
-## Models
+- Berlin area: Mitte, Friedrichshain, Kreuzberg, Neukolln, Charlottenburg
+- Size in square meters
+- Number of rooms
+- Distance to transport
+- Building age
+- Synthetic sample count and random seed
 
-| Task | Model | Target |
-|---|---|---|
-| Regression | Linear Regression | Monthly rent |
-| Classification | Logistic Regression | Standard or luxury apartment |
-
-Input features: location, size in square meters, rooms, distance to transport, and building age.
-
-## Install
+## Run Locally
 
 ```bash
-git clone git@github.com:itkrivoshei/berlin-rent-prediction-ml.git
+git clone https://github.com/itkrivoshei/berlin-rent-prediction-ml.git
 cd berlin-rent-prediction-ml
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -e ".[app,dev]"
-```
-
-## Run
-
-```bash
 streamlit run streamlit_app.py
 ```
 
-Open:
+Open `http://localhost:8501`.
 
-```text
-http://localhost:8501
-```
-
-Run CLI checks:
-
-```bash
-python regression_analysis.py
-python classification_analysis.py
-```
-
-## Verify
-
-Run the same checks used by CI:
+## Checks
 
 ```bash
 python -m ruff check .
@@ -82,39 +56,25 @@ python regression_analysis.py
 python classification_analysis.py
 ```
 
-## CI/CD
-
-GitHub Actions validates dependency installation, Ruff, Pytest, Python compilation, Streamlit import, and regression/classification scripts on pushes and pull requests to `main`.
-
-Dependabot checks Python and GitHub Actions dependencies weekly and is auto-merged after successful CI.
-
 ## Project Files
 
-| File | Purpose |
-|---|---|
-| [`streamlit_app.py`](streamlit_app.py) | Streamlit dashboard |
-| [`src/berlin_rent_prediction/data.py`](src/berlin_rent_prediction/data.py) | Synthetic dataset generation |
-| [`src/berlin_rent_prediction/models.py`](src/berlin_rent_prediction/models.py) | Regression and classification pipelines |
-| [`src/berlin_rent_prediction/plots.py`](src/berlin_rent_prediction/plots.py) | Matplotlib chart helpers |
-| [`regression_analysis.py`](regression_analysis.py) | CLI regression check |
-| [`classification_analysis.py`](classification_analysis.py) | CLI classification check |
-| [`tests/test_models.py`](tests/test_models.py) | Unit tests |
-| [`pyproject.toml`](pyproject.toml) | Project metadata, dependencies, Ruff, and Pytest config |
-| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | CI workflow |
-| [`.github/dependabot.yml`](.github/dependabot.yml) | Weekly dependency updates |
-| [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json) | Codespaces / Dev Container setup |
-| [`LICENSE`](LICENSE) | MIT license |
+| Path | Role |
+| --- | --- |
+| `streamlit_app.py` | Streamlit UI, controls, tabs, charts |
+| `src/berlin_rent_prediction/data.py` | Synthetic dataset generator |
+| `src/berlin_rent_prediction/models.py` | Preprocessing, regression, classification |
+| `src/berlin_rent_prediction/plots.py` | Matplotlib chart helpers |
+| `regression_analysis.py` | CLI regression run |
+| `classification_analysis.py` | CLI classification run |
+| `tests/test_models.py` | Unit coverage for model behavior |
+| `.github/workflows/ci.yml` | Ruff, Pytest, compile, import, analysis scripts |
 
 ## Deployment
 
-Streamlit Cloud uses:
+Streamlit Community Cloud runs `streamlit_app.py` with dependencies from `requirements.txt` and Python from `runtime.txt`.
 
-```text
-Main file path: streamlit_app.py
-Python version: runtime.txt
-Dependencies: requirements.txt
-```
+Live app: https://berlin-rent-prediction-ml.streamlit.app/
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+[MIT](LICENSE)
