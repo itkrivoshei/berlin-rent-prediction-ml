@@ -1,12 +1,17 @@
+<div align="center">
+
 # Berlin Rent Prediction ML
 
-[![Live app](https://img.shields.io/badge/live-Streamlit-ff4b4b?style=flat-square&logo=streamlit&logoColor=white)](https://berlin-rent-prediction-ml.streamlit.app/)
-[![Python CI](https://img.shields.io/github/actions/workflow/status/itkrivoshei/berlin-rent-prediction-ml/ci.yml?branch=main&style=flat-square&label=python%20ci&logo=githubactions&logoColor=white)](https://github.com/itkrivoshei/berlin-rent-prediction-ml/actions/workflows/ci.yml)
-[![Python](https://img.shields.io/badge/Python-3.12-3776ab?style=flat-square&logo=python&logoColor=white)](pyproject.toml)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.7-f7931e?style=flat-square&logo=scikitlearn&logoColor=white)](pyproject.toml)
-[![License: MIT](https://img.shields.io/github/license/itkrivoshei/berlin-rent-prediction-ml?style=flat-square)](LICENSE)
-
 Streamlit app for synthetic Berlin rent prediction using scikit-learn regression and classification pipelines.
+
+[![Live app](https://img.shields.io/badge/live-Streamlit-ff4b4b?style=for-the-badge&logo=streamlit&logoColor=white)](https://berlin-rent-prediction-ml.streamlit.app/)
+[![Python CI](https://img.shields.io/github/actions/workflow/status/itkrivoshei/berlin-rent-prediction-ml/ci.yml?branch=main&style=for-the-badge&label=ci&logo=githubactions&logoColor=white)](https://github.com/itkrivoshei/berlin-rent-prediction-ml/actions/workflows/ci.yml)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/itkrivoshei/berlin-rent-prediction-ml/codeql.yml?branch=main&style=for-the-badge&label=codeql&logo=github&logoColor=white)](https://github.com/itkrivoshei/berlin-rent-prediction-ml/actions/workflows/codeql.yml)
+[![Python](https://img.shields.io/badge/Python-3.12-3776ab?style=for-the-badge&logo=python&logoColor=white)](pyproject.toml)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.7-f7931e?style=for-the-badge&logo=scikitlearn&logoColor=white)](pyproject.toml)
+[![License](https://img.shields.io/github/license/itkrivoshei/berlin-rent-prediction-ml?style=for-the-badge)](LICENSE)
+
+</div>
 
 ## Model Boundary
 
